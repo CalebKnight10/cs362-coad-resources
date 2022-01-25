@@ -6,9 +6,12 @@ made available by members of Community Organizations Active in Disaster.
 
 ## Development
 
-Clone the repository:
+
+
+Fork then clone the repository:
 
 ```
+Go to Fork in top right corner
 git clone git@github.com:osu-cascades/coad-resources.git
 ```
 
@@ -22,6 +25,10 @@ bundle install
 ```
 
 Next, set up the database:
+
+Will need to visit the ```.env``` file and then input values for "nil"
+
+Then run:
 
 ```
 rails db:setup
@@ -108,4 +115,4 @@ Recaptcha
 ![erd](public/documentation/erd.jpg?raw=true)
 
 
-&copy; 2020 Jonah Broyer, James Martinez, Ryder McDowell. All rights reserved.
+&copy; 2020 Caleb Knight, James Martinez, Ryder McDowell. All rights reserved.
