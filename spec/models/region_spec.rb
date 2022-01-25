@@ -21,4 +21,17 @@ RSpec.describe Region, type: :model do
     end
   end
 
+  describe "uniqueness" do 
+    it "is not case senstive" do
+      name = 'Fake Name'
+      region = Region.create(name: name)
+      region_two = Region.new(name: 'Unique Name')
+      expect(region).to be_valid
+      region_two = region.dup
+      expect(region_two).to be_invalid
+      region_two.name = name.downcase
+      expect(region_two).to be_invalid
+    end
+  end
+
 end
