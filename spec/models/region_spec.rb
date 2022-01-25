@@ -21,6 +21,13 @@ RSpec.describe Region, type: :model do
     end
   end
 
+  describe "::unspecified" do
+    it "returns a Region with the name 'Unspecified'" do
+      region = Region.unspecified
+      expect(region.name).to eq('Unspecified')
+    end
+  end
+
   describe "uniqueness" do 
     it "is not case senstive" do
       name = 'Fake Name'
