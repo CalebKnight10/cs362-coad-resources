@@ -115,4 +115,4 @@ Recaptcha
 ![erd](public/documentation/erd.jpg?raw=true)
 
 
-&copy; 2020 Caleb Knight, James Martinez, Ryder McDowell. All rights reserved.
+&copy; 2020 Caleb Knight, Jonah Broyer, James Martinez, Ryder McDowell. All rights reserved.
