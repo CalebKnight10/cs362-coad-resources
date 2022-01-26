@@ -28,6 +28,12 @@ RSpec.describe Region, type: :model do
     end
   end
 
+  describe "associations" do
+    it "has many tickets" do
+      expect(Region.new).to have_many(:tickets)
+    end
+  end
+
   describe "uniqueness" do 
     it "is not case senstive" do
       name = 'Fake Name'
