@@ -56,7 +56,7 @@ RSpec.describe Region, type: :model do
       expect(region).to be_valid
       region.name = ''
       expect(region).to_not be_valid
-      expect(region).to validate_presence_of(:name)
+      # expect(region).to validate_presence_of(:name)
     end
     it "cannot have a length greater than 255" do
       # name = 'Fake Region'
