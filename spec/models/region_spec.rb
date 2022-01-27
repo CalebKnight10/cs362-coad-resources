@@ -47,21 +47,20 @@ RSpec.describe Region, type: :model do
     end
   end
 
-  describe "length of name" do
-    it "can't be blank" do
+  describe "validations" do
+    it "cannot have a blank name" do
       name = 'Fake Region'
       region = Region.create!(name: name)
       expect(region).to be_valid
       region.name = ''
       expect(region).to_not be_valid
+      expect(region).to validate_presence_of(:name)
     end
-    it "can't have length greater than 255" do
+    it "cannot have a length greater than 255" do
       # name = 'Fake Region'
       # region = Region.create!(name: name)
       # expect(region).to be_valid
-      expect(region).to 
-       validate_length_of(:name).
-       is_at_least(1). is_at_most(255)
+      expect(region).to validate_length_of(:name).is_at_least(1).is_at_most(255)
       #       region.name << 256
       # expect(region).to be_valid
     end
