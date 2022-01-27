@@ -62,7 +62,7 @@ RSpec.describe Region, type: :model do
       # name = 'Fake Region'
       # region = Region.create!(name: name)
       # expect(region).to be_valid
-      expect(region).to validate_length_of(:name).is_at_least(1).is_at_most(255)
+      expect(region).to validate_length_of(:name).is_at_least(1).is_at_most(255).on(:create)
       #       region.name << 256
       # expect(region).to be_valid
     end
