@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Organization, type: :model do
 
-  let :organization {
+  let (:organization) {
     organization = Organization.new(
       status: "Fake Status",
       phone: "555-123-4567",
@@ -16,6 +16,7 @@ RSpec.describe Organization, type: :model do
       title: "Fake Title",
       transportation: "Fake Car")
   }
+  
 
 
   describe "validations" do
