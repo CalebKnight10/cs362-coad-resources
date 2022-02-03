@@ -21,7 +21,7 @@ RSpec.describe Region, type: :model do
       region = build(:region)  
       # region = Region.new(name: 'Mt. Hood')
       result = region.to_s
-      expect(result).to eq('Fake Name')
+      expect(result).to eq('Fake Region')
     end
   end
 
