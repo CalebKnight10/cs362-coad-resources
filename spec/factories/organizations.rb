@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :organization do
+    name { "Fake Organization Name" }
     status { "approved" }
     phone { "555-123-4567" }
     email { "fake@example.com" }
