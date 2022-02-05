@@ -35,6 +35,20 @@ RSpec.describe Organization, type: :model do
     it "cannot have a description length greater than 1020" do
       expect(organization).to validate_length_of(:description).is_at_most(1020).on(:create)
     end
+    it "is a unique email" do
+      expect(organization).to validate_uniqueness_of(:email).case_insensitive
+    end
+    it "is a unique name" do
+      expect(organization).to validate_uniqueness_of(:name).case_insensitive
+    end
+    it "cannot have an email without '@'" do
+      organization.email = "fake_email.com"
+      expect(organization).to be_invalid
+    end
+    it "cannot have an email without a domain" do
+      organization.email = "fake_email@test"
+      expect(organization).to be_invalid
+    end
   end
 
   describe "associations" do
