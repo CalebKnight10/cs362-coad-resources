@@ -12,5 +12,9 @@ FactoryBot.define do
     secondary_phone { "555-555-5432" }
     title { "Fake Title" }
     transportation { "yes" }
+
+    factory :submitted do
+      status { "submitted" }
+    end
   end
 end

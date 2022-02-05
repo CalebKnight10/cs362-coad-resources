@@ -48,4 +48,34 @@ RSpec.describe Organization, type: :model do
       expect(organization).to have_and_belong_to_many(:resource_categories)
     end
   end
+
+  describe "methods" do
+    describe "#approve" do
+      it "returns a status of 'approved'" do
+        organization = build(:organization, :submitted)
+        organization.approve
+        expect(organization.status).to eq("approved")
+      end
+    end
+    describe "#reject" do
+      it "returns a status of 'rejected'" do
+        organization = build(:organization, :submitted)
+        organization.reject
+        expect(organization.status).to eq("rejected")
+      end
+    end
+    describe "#set_default_status" do
+      it "sets the default status" do
+        organization = build(:organization, :submitted)
+        organization.set_default_status
+        expect(organization.status).to eq("submitted")
+      end
+    end
+    describe "#to_s" do
+      it "has a string representation that is its name" do
+        name = organization.name
+        expect(organization.to_s).to eq(name)
+      end
+    end
+  end
 end
