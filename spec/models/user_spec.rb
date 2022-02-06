@@ -28,4 +28,20 @@ RSpec.describe User, type: :model do
       expect(user).to validate_length_of(:password).is_at_least(7).is_at_most(255).on(:create)
     end
   end
+
+  describe "methods" do
+    describe "#set_default_role" do
+      it "sets the default role" do
+        user = build(:user, :organization)
+        user.set_default_role
+        expect(user.role).to eq("organization")
+      end
+    end
+    describe "#to_s" do
+      it "has a string representation that is its email" do
+        email = user.email
+        expect(user.to_s).to eq(email)
+      end
+    end
+  end
 end
