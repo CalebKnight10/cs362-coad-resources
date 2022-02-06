@@ -16,11 +16,9 @@ RSpec.describe Organization, type: :model do
       title: "Fake Title",
       transportation: "Fake Car")
   }
-  
 
 
   describe "validations" do
-
     it "is invalid without an email" do
       expect(organization).to be_invalid
     end
