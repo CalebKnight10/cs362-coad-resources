@@ -6,7 +6,7 @@ RSpec.describe Ticket, type: :model do
 
   describe "validations" do
     it "is invalid without a name" do
-      expect(ticket).to be_valid
+      expect(ticket.name).to eq("Fake Ticket Name")
     end
     it "is invalid without a phone number" do 
       expect(ticket).to validate_presence_of(:phone)
