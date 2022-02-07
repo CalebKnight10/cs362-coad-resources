@@ -23,6 +23,9 @@ RSpec.describe Ticket, type: :model do
     it "is invalid without a resource category ID" do 
       expect(ticket.resource_category_id).to eq(1)
     end
+    it "has a description" do 
+      expect(ticket.description).to be_truthy
+    end
     it "is invalide if the name is less than 1 or more than 255" do 
       expect(ticket).to validate_length_of(:name).is_at_least(1).is_at_most(255).on(:create)
     end

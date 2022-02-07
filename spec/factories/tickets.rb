@@ -4,5 +4,6 @@ FactoryBot.define do
     phone { "555-123-4567" }
     region_id { 1 }
     resource_category_id { 1 }
+    description { "Fake Description" }
   end
 end
