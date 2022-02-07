@@ -4,18 +4,27 @@ RSpec.describe Ticket, type: :model do
 
   let(:ticket) { build(:ticket) }
 
+  describe "ticket" do 
+    it { should belong_to :region }
+    it { should belong_to :resource_category}
+    it { should belong_to :organization }
+  end
+
   describe "validations" do
     it "is invalid without a name" do
       expect(ticket.name).to eq("Fake Ticket Name")
     end
     it "is invalid without a phone number" do 
-      expect(ticket).to validate_presence_of(:phone)
+      expect(ticket.phone).to be_truthy
     end
     it "is invalid without a region ID" do
-      expect(ticket).to validate_presence_of(:region_id)
+      expect(ticket.region_id).to eq(1)
     end
     it "is invalid without a resource category ID" do 
-      expect(ticket).to validate_presence_of(:resource_category_id)
+      expect(ticket.resource_category_id).to eq(1)
+    end
+    it "is invalide if the name is less than 1 or more than 255" do 
+      expect(ticket).to validate_length_of(:name).is_at_least(1).is_at_most(255).on(:create)
     end
   end
 
