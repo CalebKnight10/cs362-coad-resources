@@ -1,15 +1,21 @@
+# FactoryBot.define do
+#   factory :ticket do
+#     name { 'Fake Ticket Name' }
+#     description { 'Fake Ticket Description' }
+#     phone { "555-123-4567" }
+#     closed { false }
+#   end
+# end
+
 FactoryBot.define do
-  # factory :ticket do
-  #   name { "Fake Ticket Name" }
-  #   phone { "+1-555-123-4567" }
-  #   region_id { 1 }
-  #   resource_category_id { 1 }
-  #   description { "Fake Description" }
-  # end
   factory :ticket do
     name { 'Fake Ticket Name' }
     description { 'Fake Ticket Description' }
-    phone { "555-123-4567" }
+    phone { '+13035544321' }
+    organization_id { create(:organization) }
     closed { false }
-    end
+    closed_at { nil }
+    resource_category { build_stubbed(:resource_category) }
+    region { build_stubbed(:region) }
   end
+end

@@ -12,7 +12,7 @@ RSpec.describe Ticket, type: :model do
 # sequence(:name { |n} "Fake resouce category #{n}" ")
 
 
-let(:ticket) { build(:ticket) }
+let(:ticket) { create(:ticket) }
 
 describe "ticket" do 
   it { should belong_to :region }
@@ -28,30 +28,10 @@ describe "validations" do
     expect(ticket.phone).to be_truthy
   end
   it "is invalid without a region ID" do
-    ticket2 = Ticket.new(
-      name: 'Fake Ticket',
-      description: 'Fake Ticket Description',
-      phone: '+13035544321',
-      #organization_id: creat(:organization).id,
-      closed: false,
-      closed_at: nil,
-      resource_category: create(:resource_category),
-      region: create(:region)
-      )
-    expect(ticket2.region_id).to be_truthy
+    expect(ticket.region_id).to be_truthy
   end
   it "is invalid without a resource category ID" do
-    ticket2 = Ticket.new(
-      name: 'Fake Ticket',
-      description: 'Fake Ticket Description',
-      phone: '+13035544321',
-      #organization_id: creat(:organization).id,
-      closed: false,
-      closed_at: nil,
-      resource_category: create(:resource_category),
-      region: create(:region)
-      )
-    expect(ticket2.resource_category_id).to be_truthy
+    expect(ticket.resource_category_id).to be_truthy
   end
   it "has a description" do 
     expect(ticket.description).to be_truthy
@@ -60,17 +40,7 @@ describe "validations" do
     expect(ticket).to validate_length_of(:name).is_at_least(1).is_at_most(255).on(:create)
   end
   it "validates phone using phony_plausible" do
-    ticket2 = Ticket.new(
-      name: 'Fake Ticket',
-      description: 'Fake Ticket Description',
-      phone: '+13035544321',
-      #organization_id: creat(:organization).id,
-      closed: false,
-      closed_at: nil,
-      resource_category: create(:resource_category),
-      region: create(:region)
-      )
-    expect(ticket2).to be_valid
+    expect(ticket).to be_valid
   end
 end
 
