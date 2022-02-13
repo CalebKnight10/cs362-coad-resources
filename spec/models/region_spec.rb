@@ -2,57 +2,41 @@ require 'rails_helper'
 
 RSpec.describe Region, type: :model do
 
-  describe "attributes" do
+  let(:region) { build(:region) }
+
+  describe "validations" do
     it "has a name" do
-      region = build(:region)
       expect(region).to respond_to(:name)
     end
-  end
 
-  describe "#to_s" do
-    it "has a string representation that is its name" do
-      region = build(:region)  
-      result = region.to_s
-      expect(result).to eq('Fake Region')
+    it "is a unique name" do
+      expect(region).to validate_uniqueness_of(:name).case_insensitive
+    end
+
+    it "cannot have a name length greater than 255" do
+      expect(region).to validate_length_of(:name).is_at_least(1).is_at_most(255).on(:create)
     end
   end
 
-  describe "::unspecified" do
-    it "returns a Region with the name 'Unspecified'" do
-      region = Region.unspecified
-      expect(region.name).to eq('Unspecified')
+  describe "methods" do
+    describe "#to_s" do
+      it "has a string representation that is its name" do 
+        name = region.name
+        expect(region.to_s).to eq(name)
+      end
+    end
+
+    describe "::unspecified" do
+      it "returns a Region with the name 'Unspecified'" do
+        region = Region.unspecified
+        expect(region.name).to eq('Unspecified')
+      end
     end
   end
 
   describe "associations" do
     it "has many tickets" do
-      expect(Region.new).to have_many(:tickets)
-    end
-  end
-
-  describe "uniqueness" do 
-    it "is not case senstive" do
-      name = 'Fake Name'
-      region = Region.create!(name: name)
-      region_two = Region.new(name: 'Unique Name')
-      expect(region).to be_valid
-      region_two = region.dup
-      expect(region_two).to be_invalid
-      region_two.name = name.downcase
-      expect(region_two).to be_invalid
-    end
-  end
-
-  describe "validations" do
-    it "cannot have a blank name" do
-      region = build(:region)  
-      expect(region).to be_valid
-      region.name = ''
-      expect(region).to_not be_valid
-    end
-    it "cannot have a length greater than 255" do
-      region = build(:region)  
-      expect(region).to validate_length_of(:name).is_at_least(1).is_at_most(255).on(:create)
+      expect(region).to have_many(:tickets)
     end
   end
 end
