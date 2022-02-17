@@ -66,21 +66,24 @@ describe "methods" do
   end
 end
 
-  # describe "scopes" do
-  #   describe "open" do 
-  #     # given there is ticket in db
-  #     open_ticket = Ticket.create!( name: 'Fake Ticket', description: 'Fake Ticket Description', phone: '+11234561234', organization: nil,
-  #       closed: false, closed_at: nil, resource_category: create(:resource_category), region: create(:region) )
-  #     closed_ticket = Ticket.create!(:closed)
-  #     results = Ticket.open
-  #     expect(results).to include(open_ticket)
-  #     expect(results).to_not include(closed_ticket)
-  #     # when retrieve open ticket
-  #     # should have list of tickets open
-  #     # and none that are not open
-  #       end
-  #     end
-  #   end
-  # end
-  
+describe "scopes" do
+  describe "open" do 
+      # given there is ticket in db
+      it "is an open ticket" do 
+        open_ticket = Ticket.create!( name: 'Fake Ticket', description: 'Fake Ticket Description', phone: '+13035544321', organization: nil,
+          closed: false, closed_at: nil, resource_category: create(:resource_category), region: create(:region) )
+          results = Ticket.open
+          expect(results).to include(open_ticket)
+      end
+      it "is a closed ticket" do
+        closed_ticket = Ticket.create!(name: 'Fake Ticket1', description: 'Fake Ticket Description1', phone: '+13035544321', organization: nil,
+          closed: true, closed_at: nil, resource_category: create(:resource_category), region: create(:region) )
+        results = Ticket.open
+        expect(results).to_not include(closed_ticket)
+      # when retrieve open ticket
+      # should have list of tickets open
+      # and none that are not open
+    end
+  end
+end
 end
