@@ -88,32 +88,32 @@ describe "scopes" do
   describe "all_organization" do
     it "returns tickets that are currently open and have a valid organization_id" do 
       ticket_with_organization_id = create(:ticket, 
-    resource_category: build_stubbed(:resource_category, name: "f2"),
-    region: build_stubbed(:region, name: "f2"), organization_id: 1, closed: false)
+        resource_category: build_stubbed(:resource_category, name: "f2"),
+        region: build_stubbed(:region, name: "f2"), organization_id: 1, closed: false)
       expect(Ticket.all_organization).to include(ticket_with_organization_id)
     end
   end
   describe "organzation" do 
     it "returns tickets that are currently open and have a specific organization_id" do 
       ticket_with_organization_id = create(:ticket, 
-    resource_category: build_stubbed(:resource_category, name: "f2"),
-    region: build_stubbed(:region, name: "f2"), organization_id: 1, closed: false)
+        resource_category: build_stubbed(:resource_category, name: "f2"),
+        region: build_stubbed(:region, name: "f2"), organization_id: 1, closed: false)
       expect(Ticket.organization(ticket_with_organization_id.organization_id)).to include(ticket_with_organization_id)
     end
   end
   describe "closed_organization" do 
     it "is a ticket where the organization is closed" do 
       ticket_with_organization_id = create(:ticket, 
-    resource_category: build_stubbed(:resource_category, name: "f2"),
-    region: build_stubbed(:region, name: "f2"), organization_id: 1, closed: true)
+        resource_category: build_stubbed(:resource_category, name: "f2"),
+        region: build_stubbed(:region, name: "f2"), organization_id: 1, closed: true)
       expect(Ticket.organization(ticket_with_organization_id.organization_id)).to be_truthy
     end
   end
   describe "region" do 
     it "will return tickets that correspond with a specific region_id" do 
       closed_ticket = create(:ticket, 
-    resource_category: build_stubbed(:resource_category, name: "f2"),
-    region: build_stubbed(:region, name: "f2"), organization_id: 1, closed: true)
+        resource_category: build_stubbed(:resource_category, name: "f2"),
+        region: build_stubbed(:region, name: "f2"), organization_id: 1, closed: true)
       expect(Ticket.region(ticket.region_id)).to include(ticket)
       expect(Ticket.region(ticket.region_id)).to_not include(closed_ticket)
     end
@@ -121,8 +121,8 @@ describe "scopes" do
   describe "resource_category" do 
     it "will return tickets that correspond with a specific resource_category_id" do 
       closed_ticket = create(:ticket, 
-    resource_category: build_stubbed(:resource_category, name: "f2"),
-    region: build_stubbed(:region, name: "f2"), organization_id: 1, closed: true)
+        resource_category: build_stubbed(:resource_category, name: "f2"),
+        region: build_stubbed(:region, name: "f2"), organization_id: 1, closed: true)
       expect(Ticket.resource_category(ticket.resource_category_id)).to include(ticket)
       expect(Ticket.resource_category(ticket.resource_category_id)).to_not include(closed_ticket)
     end
