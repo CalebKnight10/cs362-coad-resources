@@ -26,9 +26,21 @@ RSpec.describe ResourceCategory, type: :model do
   end
 
   describe "scope" do
-    it "has a scope" do
-      resource_category = ResourceCategory.new
-      expect(resource_category).to respond_to(:active || :inactive)
+    describe "active" do
+      it "has active resource categories" do
+        active_resource_category = create(:resource_category)
+        inactive_resource_category = create(:inactive_resource_category)
+        activate = ResourceCategory.active
+        expect(activate).to include(active_resource_category)
+      end
+    end
+    describe "inactive" do
+      it "has inactive resource categories" do
+        active_resource_category = create(:resource_category)
+        inactive_resource_category = create(:inactive_resource_category)
+        deactivate = ResourceCategory.inactive
+        expect(deactivate).to include(inactive_resource_category)
+      end
     end
   end
 
@@ -40,14 +52,14 @@ RSpec.describe ResourceCategory, type: :model do
       end
     end
     describe "#activate" do
-      it "makes a region category active" do
+      it "makes a resource category active" do
         resource_category.active = false
         resource_category.activate
         expect(resource_category.active).to be_truthy
       end
     end
     describe "#deactivate" do 
-      it "makes a region category unactive" do 
+      it "makes a resource category unactive" do 
         resource_category.activate
         expect(resource_category.active).to be_truthy
       end
