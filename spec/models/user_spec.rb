@@ -29,6 +29,12 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe "associations" do
+    it "should belong to an organization" do
+      should belong_to :organization
+    end
+  end
+
   describe "methods" do
     describe "#set_default_role" do
       it "sets the default role" do
