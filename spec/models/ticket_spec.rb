@@ -14,7 +14,7 @@ RSpec.describe Ticket, type: :model do
 
 let(:ticket) { create(:ticket) }
 
-describe "ticket" do 
+describe "associations" do 
   it { should belong_to :region }
   it { should belong_to :resource_category}
   it { should belong_to :organization }
