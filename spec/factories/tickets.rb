@@ -1,12 +1,3 @@
-# FactoryBot.define do
-#   factory :ticket do
-#     name { 'Fake Ticket Name' }
-#     description { 'Fake Ticket Description' }
-#     phone { "555-123-4567" }
-#     closed { false }
-#   end
-# end
-
 FactoryBot.define do
   factory :ticket do
     name { 'Fake Ticket Name' }
