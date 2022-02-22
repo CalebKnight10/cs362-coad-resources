@@ -4,7 +4,9 @@ RSpec.describe ResourceCategoriesController, type: :controller do
 
   describe "a non logged in person" do
     it "redirects to the sign in screen" do 
-      get:index
+      get :index
+      expect(response).to redirect_to(new_user_session_path)
+      get :new
       expect(response).to redirect_to(new_user_session_path)
     end
   end
