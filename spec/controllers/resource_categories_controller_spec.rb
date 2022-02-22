@@ -14,8 +14,8 @@ RSpec.describe ResourceCategoriesController, type: :controller do
       expect(response).to redirect_to(new_user_session_path)
       patch :update, params: {id: 'FAKE'}
       expect(response).to redirect_to(new_user_session_path)
-      # get :new
-      # expect(response).to redirect_to(new_user_session_path)
+      delete :destroy, params: {id: 'FAKE'}
+      expect(response).to redirect_to(new_user_session_path)
     end
   end
 
