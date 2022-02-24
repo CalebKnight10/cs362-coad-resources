@@ -2,8 +2,6 @@ require 'rails_helper'
 
 RSpec.describe RegionsController, type: :controller do
 
-<<<<<<< HEAD
-=======
   describe "a non logged in person" do
     it "redirects to the sign in screen" do
       get :index
@@ -24,6 +22,5 @@ RSpec.describe RegionsController, type: :controller do
       expect(response).to redirect_to(new_user_session_path)
     end
   end
->>>>>>> 4b9b468ef006bfad73c4ddf7f1431b1f40a67a0e
 
 end
