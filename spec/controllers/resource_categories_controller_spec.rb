@@ -30,6 +30,8 @@ RSpec.describe ResourceCategoriesController, type: :controller do
       expect(response).to redirect_to(dashboard_path)
       get :create
       expect(response).to redirect_to(dashboard_path)
+      get :update, params: {id: 'FAKE'}
+      expect(response).to redirect_to(dashboard_path)
     end
   end
 end
