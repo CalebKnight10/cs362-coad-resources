@@ -26,6 +26,8 @@ RSpec.describe ResourceCategoriesController, type: :controller do
       sign_in(resource_category_user)
       get :index
       expect(response).to redirect_to(dashboard_path)
+      get :new 
+      expect(response).to redirect_to(dashboard_path)
     end
   end
 end
