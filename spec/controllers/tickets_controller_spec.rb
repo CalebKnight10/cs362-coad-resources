@@ -19,5 +19,14 @@ RSpec.describe TicketsController, type: :controller do
       get :new, params: {id: 'FAKE'}
       expect(response).to be_success
     end 
+    it "redirects user" do 
+      ticket_user = create(:user)
+      ticket_user.confirm
+      sign_in(ticket_user)
+      get :show, params: {id: 'FAKE'}
+      expect(response).to redirect_to(dashboard_path)
+      get :destroy, params: {id: 'FAKE'}
+      expect(response).to redirect_to(dashboard_path)
+    end
   end
 end
