@@ -14,6 +14,26 @@ RSpec.describe OrganizationsController, type: :controller do
       expect(response).to redirect_to(new_user_session_path)
       post :approve, params: {id: 'FAKE'}
       expect(response).to redirect_to(new_user_session_path)  
+      post :reject, params: {id: 'FAKE'}
+      expect(response).to redirect_to(new_user_session_path)
+    end
+  end
+  describe "an organization user" do 
+    it "redirects to the dashboard" do 
+      organization_user = create(:organization_user)
+      organization_user.confirm
+      organization_user.organization.approve
+      organization_user.organization.save!
+      sign_in(organization_user)
+
+      get :new 
+      expect(response).to redirect_to(dashboard_path)
+      post :create
+      expect(response).to redirect_to(dashboard_path)
+      post :approve, params: {id: 'FAKE'}
+      expect(response).to redirect_to(dashboard_path)
+      post :reject, params: {id: 'FAKE'}
+      expect(response).to redirect_to(dashboard_path)
     end
   end
 end
