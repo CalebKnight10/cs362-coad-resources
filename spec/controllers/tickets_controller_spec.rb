@@ -11,7 +11,6 @@ RSpec.describe TicketsController, type: :controller do
   end
 
   describe "a logged in person" do 
-    # it "creates a new ticket" do 
     it "directs person to new ticket page" do 
       ticket_user = create(:user)
       ticket_user.confirm

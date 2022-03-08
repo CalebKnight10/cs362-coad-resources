@@ -6,6 +6,14 @@ RSpec.describe OrganizationsController, type: :controller do
     it "redirects to the sign in screen" do 
       get :index
       expect(response).to redirect_to(new_user_session_path)
+      put :update, params: {id: 'FAKE'}
+      expect(response).to redirect_to(new_user_session_path)
+      patch :update, params: {id: 'FAKE'}
+      expect(response).to redirect_to(new_user_session_path)  
+      get :show, params: {id: 'FAKE'}
+      expect(response).to redirect_to(new_user_session_path)
+      post :approve, params: {id: 'FAKE'}
+      expect(response).to redirect_to(new_user_session_path)  
     end
   end
 end
