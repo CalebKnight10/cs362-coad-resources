@@ -5,14 +5,14 @@ FactoryBot.define do
     password_confirmation { "Fake Secure Password" }
     role { "organization" }
 
-    factory :organization_user do
-      sequence(:email) { |n| "fake#{n}@fake.com" }
-      password { "Fake Secure Password" }
-      role { "organization" }
-      organization
+  factory :organization_user do
+    sequence(:email) { |n| "fake#{n}@fake.com" }
+    password { "Fake Secure Password" }
+    role { "organization" }
+    organization
 
-      factory :admin_user do
-        role { "admin" }
+  factory :admin_user do
+    role { "admin" }
       end
     end
   end

@@ -18,7 +18,7 @@ RSpec.describe OrganizationsController, type: :controller do
       expect(response).to redirect_to(new_user_session_path)
     end
   end
-  describe "an organization user" do 
+  describe "an approved organization user" do 
     it "redirects to the dashboard" do 
       organization_user = create(:organization_user)
       organization_user.confirm
